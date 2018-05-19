@@ -183,9 +183,10 @@ function doneLoading() {
 }
 
 document.getElementById('capture-button').addEventListener('click', async () => {
-  console.log('pic taken');
   const img = webcam.capture();
+  console.log('pic taken');
   let result = await mobileNet.predict(img);
+  console.log('predict');
   const topK = mobileNet.getTopKClasses(result, 5);
 
   const successElem = document.getElementById('capture-button');
