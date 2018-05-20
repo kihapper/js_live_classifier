@@ -9,8 +9,8 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './'),
+    filename: 'bundle_tiger.js',
+    path: path.resolve(__dirname, 'src/'),
     publicPath: '/',
   },
   module: {
