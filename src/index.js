@@ -160,7 +160,7 @@ const mobileNet = new MobileNet();
 
 (async function main() {
   try {
-    alert("IMPORTANT: Turn on the video to do this");
+    alert("IMPORTANT:This does not work...yet...T_T");
     await webcam.setup();
     console.time('Loading of model');
     await mobileNet.load();
