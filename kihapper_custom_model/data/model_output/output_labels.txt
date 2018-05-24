@@ -1,0 +1,5 @@
+bicycle
+exit
+fire extinguisher
+sphere cam
+square cam
