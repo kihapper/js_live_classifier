@@ -148,7 +148,7 @@ export class MobileNet {
 
     let predictionList = []; 
 
-    for (let i = 0; i < values.length; i+=2 ) {
+    for (let i = 0; i < values.length; i++ ) {
      predictionList.push({value: values[i], index: i});
      console.log('predeictionList in ' + i + 'is...' + predictionList);
     }
@@ -208,9 +208,11 @@ document.getElementById('capture-button').addEventListener('click', async () => 
 
   const diseaseListItems = document.getElementsByClassName('disease-list-item');
   console.log(topK);
+        
+  //  for(var key in diseaseListItems){
 
-  for(var key in diseaseListItems){
-      console.log('On array..' + key);
+  for(var key=0; key<=10; key+=2){
+    console.log('On array..' + key);
     console.log(topK[key]['label'] + ' ' + topK[key]['value']);
     diseaseListItems[key].innerText=topK[key]['label'].replace(/\b\w/g, l => l.toUpperCase()) + ' ' + (topK[key]['value']*100).toFixed(2) + '%';
   }
