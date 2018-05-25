@@ -144,7 +144,7 @@ export class MobileNet {
     predictions.dispose();
 
     let predictionList = [];
-    for (let i = 0; i < values.length; i+=2) {
+    for (let i = 0; i < values.length; i++) {
       predictionList.push({value: values[i], index: i});
     }
     predictionList = predictionList
@@ -194,7 +194,7 @@ document.getElementById('capture-button').addEventListener('click', async () => 
   console.log('pic taken');
   let result = await mobileNet.predict(img);
   console.log('predict');
-  const topK = mobileNet.getTopKClasses(result, 10);
+  const topK = mobileNet.getTopKClasses(result, 5);
 
   const successElem = document.getElementById('capture-button');
   successElem.style.bottom = '5%';
