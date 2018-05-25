@@ -141,16 +141,13 @@ export class MobileNet {
 
   getTopKClasses(predictions, topK) {
     const values = predictions.dataSync();
-      
-    console.log('values is...' + values);
-    console.log('values length is...' + values.length);
     predictions.dispose();
 
     let predictionList = []; 
 
     for (let i = 0; i < values.length; i++ ) {
      predictionList.push({value: values[i], index: i});
-     console.log('predeictionList in ' + i + 'is...' + predictionList);
+    // console.log('predeictionList in ' + i + 'is...' + predictionList);
     }
     predictionList = predictionList
                          .sort((a, b) => {
@@ -169,7 +166,7 @@ const mobileNet = new MobileNet();
 
 (async function main() {
   try {
-    alert("IMPORTANT:This does not work...yet...T_T");
+    alert("IMPORTANT:It's almost working...?");
     await webcam.setup();
     console.time('Loading of model');
     await mobileNet.load();
@@ -214,6 +211,6 @@ document.getElementById('capture-button').addEventListener('click', async () => 
   for(var key=0; key<=10; key+=2){
     console.log('On array..' + key);
     console.log(topK[key]['label'] + ' ' + topK[key]['value']);
-    diseaseListItems[key].innerText=topK[key]['label'].replace(/\b\w/g, l => l.toUpperCase()) + ' ' + (topK[key]['value']*100).toFixed(2) + '%';
+    diseaseListItems[key/2].innerText=topK[key]['label'].replace(/\b\w/g, l => l.toUpperCase()) + ' ' + (topK[key]['value']*100).toFixed(2) + '%';
   }
 });
