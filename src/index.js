@@ -127,11 +127,12 @@ export class MobileNet {
     const preprocessedInput = tfc.div(
         tfc.sub(input.asType('float32'), INPUT_MEAN),
         INPUT_STD);
-    const reshapedInput =
-        preprocessedInput.reshape([1, ...preprocessedInput.shape]);
+      
+    const twoInputs = tfc.stack([preprocessedInput, preprocessedInput]);
+    //const reshapedInput = preprocessedInput.reshape([1, ...preprocessedInput.shape]);
     const dict = {};
 
-    dict[INPUT_NODE_NAME] = reshapedInput;
+    dict[INPUT_NODE_NAME] = twoInputs;
     return this.model.execute(dict, OUTPUT_NODE_NAME);
   }
 
