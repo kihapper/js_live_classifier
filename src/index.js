@@ -141,11 +141,16 @@ export class MobileNet {
 
   getTopKClasses(predictions, topK) {
     const values = predictions.dataSync();
+      
+    console.log('values is...' + values);
+    console.log('values length is...' + values.length);
     predictions.dispose();
 
-    let predictionList = [];
-    for (let i = 0; i < values.length; i++) {
-      predictionList.push({value: values[i], index: i});
+    let predictionList = []; 
+
+    for (let i = 0; i < values.length; i+=2 ) {
+     predictionList.push({value: values[i], index: i});
+     console.log('predeictionList in ' + i + 'is...' + predictionList);
     }
     predictionList = predictionList
                          .sort((a, b) => {
@@ -205,7 +210,7 @@ document.getElementById('capture-button').addEventListener('click', async () => 
   console.log(topK);
 
   for(var key in diseaseListItems){
-      console.log('key is this value' + key);
+      console.log('On array..' + key);
     console.log(topK[key]['label'] + ' ' + topK[key]['value']);
     diseaseListItems[key].innerText=topK[key]['label'].replace(/\b\w/g, l => l.toUpperCase()) + ' ' + (topK[key]['value']*100).toFixed(2) + '%';
   }
