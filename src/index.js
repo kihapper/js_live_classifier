@@ -193,8 +193,8 @@ document.getElementById('capture-button').addEventListener('click', async () => 
   const img = webcam.capture();
   console.log('pic taken');
   let result = await mobileNet.predict(img);
-  console.log('predict');
-  const topK = mobileNet.getTopKClasses(result, 5);
+  console.log('predict...');
+  const topK = mobileNet.getTopKClasses(result, 10);
 
   const successElem = document.getElementById('capture-button');
   successElem.style.bottom = '5%';
@@ -205,6 +205,7 @@ document.getElementById('capture-button').addEventListener('click', async () => 
   console.log(topK);
 
   for(var key in diseaseListItems){
+      console.log('key is this value' + key);
     console.log(topK[key]['label'] + ' ' + topK[key]['value']);
     diseaseListItems[key].innerText=topK[key]['label'].replace(/\b\w/g, l => l.toUpperCase()) + ' ' + (topK[key]['value']*100).toFixed(2) + '%';
   }
