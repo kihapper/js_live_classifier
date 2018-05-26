@@ -68,7 +68,7 @@ export class Webcam {
       const stream = await navigator.mediaDevices.getUserMedia({
         'audio': false,
         'video': {
-          facingMode: 'user'
+          facingMode: 'environment'
         }
       });
       window.stream = stream;
