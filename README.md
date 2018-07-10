@@ -1,8 +1,7 @@
 # js_live_classifier
 
 
-Trying to make real time custom image classification using Tensorflow.js
-!Work in progress and does not work yet! 
+Experiment with real time custom image classification using Tensorflow.js
 See more info [here](https://groups.google.com/a/tensorflow.org/d/msg/tfjs/joghxs6siuM/7Qxwkv4ABwAJ) at the google groups for this development 
 
 Demo : https://kihapper.github.io/js_live_classifier/
